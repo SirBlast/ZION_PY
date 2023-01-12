@@ -1,2 +1,2 @@
 # ZION_PY
-ZION Tienda Online desarrollada en Python
+ZION- online store developed in python
