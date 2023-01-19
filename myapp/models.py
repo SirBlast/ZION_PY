@@ -4,13 +4,13 @@ class Company(models.Model):
     idCompany= models.AutoField(primary_key=True,unique=True)
     name_contact = models.CharField(max_length=50)
     nit = models.CharField(max_length=50)
-    description = models.CharField(max_length=50)
+    description = models.CharField(max_length=50,null=True)
     settings_admin=models.TextField()
     settings_user=models.TextField()
     phone_contact=models.CharField(max_length=50)
     cell_phone_contact=models.CharField(max_length=50)
     email_contact=models.EmailField(max_length=254)
-    del_date = models.DateField(auto_now=False, auto_now_add=False)
+    del_date = models.DateField(auto_now=False, auto_now_add=False , null=True)
     date_create = models.DateField(auto_now=True, auto_now_add=False)
     date_update = models.DateField(auto_now=False, auto_now_add=True)
     user_create = models.CharField(max_length=50)
@@ -18,6 +18,7 @@ class Company(models.Model):
     
     def __str__(self):
         return self.name_contact
+    
 #Location Model
 class Location (models.Model):
     idLocation = models.AutoField(primary_key=True,unique=True)
@@ -29,7 +30,7 @@ class Location (models.Model):
     phone_contact = models.CharField(max_length=50)
     cell_phone = models.CharField(max_length=50)
     email_contact = models.EmailField(max_length=254)
-    del_date = models.DateField(auto_now=False, auto_now_add=False)
+    del_date = models.DateField(auto_now=False, auto_now_add=True,null=True)
     date_create = models.DateField(auto_now=True, auto_now_add=False)
     date_update = models.DateField(auto_now=False, auto_now_add=True)
     user_create = models.CharField(max_length=50)
@@ -37,6 +38,7 @@ class Location (models.Model):
 
     def __str__(self):
         return self.name_contact
+    
 #Person Model
 class Person(models.Model):
     idPerson = models.AutoField(primary_key=True,unique=True)
@@ -48,12 +50,15 @@ class Person(models.Model):
     telephone = models.CharField(max_length=50)
     email_contact = models.EmailField(max_length=254)
     date_of_birth = models.DateField()
-    del_date = models.DateField(auto_now=False, auto_now_add=False)
+    del_date = models.DateField(auto_now=False, auto_now_add=True,null=True)
     date_create = models.DateField(auto_now=True, auto_now_add=False)
     date_update = models.DateField(auto_now=False, auto_now_add=True)
     user_create = models.CharField(max_length=50)
     user_update = models.CharField(max_length=50)
-        
+    
+    def __str__(self):
+        return self.idNumber   
+     
 #User Model
 class User(models.Model):
     idUser = models.AutoField(primary_key=True,unique=True)
@@ -62,7 +67,10 @@ class User(models.Model):
     password = models.CharField(max_length=50)
     date_last_log = models.DateField()
     role = models.CharField(max_length=50)
-    del_date = models.DateField(auto_now=False, auto_now_add=False)
+    del_date = models.DateField(auto_now=False, auto_now_add=True,null=True)
+    
+    def __str__(self):
+        return self.user_name
 
 #Supplier Model
 class Supplier(models.Model):
@@ -72,29 +80,56 @@ class Supplier(models.Model):
     phone_contact=models.CharField(max_length=50)
     whatsapp_contact= models.CharField(max_length=50)
     address= models.CharField(max_length=50)
-    del_date =models.DateField(auto_now=False, auto_now_add=False)
+    del_date =models.DateField(auto_now=False, auto_now_add=True,null=True)
+    
+    def __str__(self):
+        return self.name_company
 
 
 #Lot Model
 class Lot(models.Model):
     idLot=models.AutoField(primary_key=True,unique=True)
-    del_date = models.DateField(auto_now=False, auto_now_add=False)
+    del_date = models.DateField(auto_now=False, auto_now_add=True,null=True)
+    
+    def __str__(self):
+        return self.idLot
+    
+    
 #Category Model
 class Category(models.Model):
-    idCategory=models.AutoField(primary_key=True,unique=True)
-    name =models.CharField(max_length=50)
-    del_date= models.DateField(auto_now=False, auto_now_add=False)
+    idCategory = models.AutoField(primary_key=True,unique=True)
+    name = models.CharField(max_length=50)
+    del_date = models.DateField(auto_now=False, auto_now_add=True,null=True)
+    
+    def __str__(self):
+        return self.name
+    
+    
 #SubCategory Model
 class SubCategory(models.Model):
     idSubCategory = models.AutoField(primary_key=True,unique=True)
     idCategory = models.ForeignKey(Category, on_delete=models.CASCADE)
     name=models.CharField(max_length=50)
-    del_date= models.DateField(auto_now=False, auto_now_add=False)    
+    del_date= models.DateField(auto_now=False, auto_now_add=True,null=True)
+    
+    def __str__(self):
+        return self.name
+    
+       
 #Product Model
 class Product(models.Model):
     idProduct= models.AutoField(primary_key=True, unique=True)
     idCategory = models.ForeignKey(Category, on_delete=models.CASCADE)
     idSubCategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE)
+    description = models.CharField(max_length=200)
+    product_name= models.CharField(max_length=50)
+    price_unit_cop = models.FloatField()
+    placement = models.CharField(max_length=50)
+    del_date = models.DateField(auto_now=False, auto_now_add=True,null=True)
+    
+    def __str__(self):
+        return self.product_name
+    
 
 #Purchase Model
 class Purchase(models.Model):
@@ -106,7 +141,10 @@ class Purchase(models.Model):
     amount = models.IntegerField()
     cost = models.FloatField()
     note = models.CharField(max_length=50)
-    del_date = models.DateField(auto_now=False, auto_now_add=False)
+    del_date = models.DateField(auto_now=False, auto_now_add=True,null=True)
+    
+    def __str__(self):
+        return self.idPurchase
 #Sale Model
 class Sale(models.Model):
     idSale= models.AutoField(primary_key=True,unique=True)
@@ -117,7 +155,11 @@ class Sale(models.Model):
     payment_method= models.CharField(max_length=50)
     note= models.CharField(max_length=50)
     total = models.FloatField()
-    del_date=models.DateField(auto_now=False, auto_now_add=False)    
+    del_date=models.DateField(auto_now=False, auto_now_add=True,null=True)
+    
+    def __str__(self):
+        return self.idSale
+        
 #PurchaseSale Model
 class PurchaseSale(models.Model):
     idPurchaseSale=models.AutoField(primary_key=True,unique=True)
@@ -126,4 +168,7 @@ class PurchaseSale(models.Model):
     idLot = models.ForeignKey(Lot, on_delete=models.CASCADE)
     amount = models.IntegerField()
     value = models.FloatField()
-    del_date= models.DateField(auto_now=False, auto_now_add=False)
+    del_date= models.DateField(auto_now=False, auto_now_add=True,null=True)
+    
+    def __str__(self):
+        return self.idPurchaseSale
