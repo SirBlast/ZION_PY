@@ -12,7 +12,9 @@
         <li><a href="/">Home</a></li>
         <li><a href="/products">Products</a></li>
         {%if request.user.is_authenticated%}
+        <li><a href="/addProduct">AddProduct</a></li>
         <li><a href="/exit">Salir</a></li>
+        
         {% else %}
         <li><a href="/accounts/login">Login</a></li>
         {% endif %}

@@ -1,4 +1,11 @@
 {% extends 'base.html' %}
 {%block content%}
 <h3>Products</h3>
+<ul>
+    {% for product in products_all %}
+    <li>{{product}}</li>
+    <button><a href={% url 'delete' product.idProduct%}>Delete</a></button>
+    <button><a href={% url 'edit' product.idProduct%}>Edit</a></button>
+    {% endfor %}
+</ul>
 {% endblock %}
