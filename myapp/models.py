@@ -1,4 +1,6 @@
 from django.db import models
+from category.models import Category
+from subcategory.models import SubCategory
 #Company Model
 class Company(models.Model):
     idCompany= models.AutoField(primary_key=True,unique=True)
@@ -94,26 +96,6 @@ class Lot(models.Model):
     def __str__(self):
         return self.idLot
     
-    
-#Category Model
-class Category(models.Model):
-    idCategory = models.AutoField(primary_key=True,unique=True)
-    name = models.CharField(max_length=50)
-    del_date = models.DateField(auto_now=False, auto_now_add=True,null=True)
-    
-    def __str__(self):
-        return self.name
-    
-    
-#SubCategory Model
-class SubCategory(models.Model):
-    idSubCategory = models.AutoField(primary_key=True,unique=True)
-    idCategory = models.ForeignKey(Category, on_delete=models.CASCADE)
-    name=models.CharField(max_length=50)
-    del_date= models.DateField(auto_now=False, auto_now_add=True,null=True)
-    
-    def __str__(self):
-        return self.name
     
        
 #Product Model

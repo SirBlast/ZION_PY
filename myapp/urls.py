@@ -1,4 +1,5 @@
 from django.urls import path
+from category.views import categories
 from . import views
 urlpatterns =[
     path('', views.home),
@@ -7,6 +8,6 @@ urlpatterns =[
     path('deleteProduct/<int:idProduct>/',views.deleteProduct, name='delete'),
     path('editProduct/<int:idProduct>/',views.editProduct, name='edit'),
     path('addCategory/',views.addCategory),
-    path('categories/',views.categories),
+    
     path('exit/',views.exit)
 ]

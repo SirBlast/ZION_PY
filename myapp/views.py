@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
-from .models import Product,Category
+from .models import Product
+from category.models import Category
 from .forms import ProductForm,CategoryForm
 # Create your views here.
 def hello(request):
@@ -19,11 +20,7 @@ def products(request):
     context={'products_all':products_all}
     return render(request,'products.html',context)
 
-@login_required
-def categories(request):
-    categories_all = Category.objects.all()
-    context={'categories_all':categories_all}
-    return render(request,'categories.html',context)
+
 
 def addProduct(request):
     if request.method == "POST":
