@@ -4,7 +4,8 @@
 <ul>
     {% for subcategory in subcategories_all %}
     <li>{{subcategory}}</li>
-  
+    <button><a href={% url 'deletesubcategory' subcategory.idSubCategory%}>Delete</a></button>
+    <button><a href={% url 'editsubcategory' subcategory.idSubCategory%}>Edit</a></button>
     {% endfor %}
 </ul>
 {% endblock %}

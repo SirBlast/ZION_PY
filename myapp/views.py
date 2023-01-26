@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
-from .models import Product
+from product.models import Product
 from category.models import Category
 from .forms import ProductForm,CategoryForm
 # Create your views here.
@@ -50,16 +50,7 @@ def editProduct(request,idProduct):
     context = {"form":form}
     return render(request,"editProduct.html",context)
     
-def addCategory(request):
-    if request.method == "POST":
-        form = CategoryForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('/categories')
-    else:
-        form = CategoryForm()
-    context ={'form':form}
-    return render(request, 'addCategory.html',context)
+
     
 
 def exit(request):

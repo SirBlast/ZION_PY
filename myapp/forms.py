@@ -1,10 +1,12 @@
 from django.forms import ModelForm
-from .models import Product,Category,SubCategory
+from category.models import Category
+from subcategory.models import SubCategory
+from product.models import Product
 
 class ProductForm(ModelForm):
     class Meta:
-        model= Product
-        fields =['product_name','price_unit_cop','idCategory','idSubCategory','description','placement']
+       model= Product
+       fields =['product_name','price_unit_cop','idCategory','idSubCategory','description','placement']
      
 class CategoryForm(ModelForm):
     class Meta:

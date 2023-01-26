@@ -6,8 +6,6 @@ urlpatterns =[
     path('products/',views.products),
     path('addProduct/',views.addProduct),
     path('deleteProduct/<int:idProduct>/',views.deleteProduct, name='delete'),
-    path('editProduct/<int:idProduct>/',views.editProduct, name='edit'),
-    path('addCategory/',views.addCategory),
-    
+    path('editProduct/<int:idProduct>/',views.editProduct, name='edit'), 
     path('exit/',views.exit)
 ]
