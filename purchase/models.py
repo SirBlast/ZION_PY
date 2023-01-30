@@ -17,4 +17,4 @@ class Purchase(models.Model):
     del_date = models.DateField(auto_now=False, auto_now_add=True,null=True)
     
     def __str__(self):
-        return self.idPurchase
+        return str(self.idPurchase)

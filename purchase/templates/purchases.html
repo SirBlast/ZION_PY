@@ -3,9 +3,8 @@
 <h3>Purchases</h3>
 <ul>
     {% for purchase in purchases_all %}
-    <li>{{purchase}}</li>
-   <!-- <button><a href={% url 'deletecategory' category.idCategory%}>Delete</a></button>
-    <button><a href={% url 'editcategory' category.idCategory%}>Edit</a></button>-->
+    <li>{{purchase.idProduct}} {{purchase.amount}}</li>
+   
     {% endfor %}
 </ul>
 {% endblock %}
