@@ -19,11 +19,26 @@ from rest_framework import routers
 from category.views import CategoryViewSet
 from product.views import ProductViewSet
 from subcategory.views import SubCategoryViewSet
+from company.views import CompanyViewSet
+from location.views import LocationViewSet
+from person.views import PersonViewSet
+from user.views import UserViewSet
+from supplier.views import SupplierViewSet
+from lot.views import LotViewSet
+from purchase.views import PurchaseViewSet
+
 
 router = routers.DefaultRouter()
 router.register(r'categories', CategoryViewSet)
 router.register(r'subcategories', SubCategoryViewSet)
 router.register(r'products', ProductViewSet)
+router.register(r'companies', CompanyViewSet)
+router.register(r'locations', LocationViewSet)
+router.register(r'persons', PersonViewSet)
+router.register(r'users', UserViewSet)
+router.register(r'suppliers', SupplierViewSet)
+router.register(r'lots', LotViewSet)
+router.register(r'purchases', PurchaseViewSet)
 
 
 urlpatterns = [
