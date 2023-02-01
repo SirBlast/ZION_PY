@@ -4,38 +4,14 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from .models import Category
 from myapp.forms import CategoryForm
+from rest_framework import viewsets
+from rest_framework import permissions
+from .serializers import CategorySerializer
 
 
-@login_required
-def categories(request):
-    categories_all = Category.objects.all()
-    context={'categories_all':categories_all}
-    return render(request,'categories.html',context)
 
-def addCategory(request):
-    if request.method == "POST":
-        form = CategoryForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('/categories')
-    else:
-        form = CategoryForm()
-    context ={'form':form}
-    return render(request, 'addCategory.html',context)
-
-def deleteCategory(request,idCategory):
-    category = Category.objects.get(idCategory = int(idCategory))
-    category.delete()
-    return redirect ('/categories')
-
-def editCategory(request,idCategory):
-    category = Category.objects.get(idCategory = int(idCategory))
-    if request.method == "POST":
-        form = CategoryForm(request.POST, instance=category)
-        if form.is_valid():
-            form.save()
-            return redirect("/categories")
-    else:
-        form = CategoryForm(instance=category)
-    context = {"form":form}
-    return render(request,"editCategory.html",context)
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+    permission_class = [permissions.IsAuthenticated]
+    
