@@ -16,7 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
-from category.views import CategoryViewSet
+from rest_framework.authtoken import views
+
+from category.views import Login,Logout
 from product.views import ProductViewSet
 from subcategory.views import SubCategoryViewSet
 from company.views import CompanyViewSet
@@ -29,7 +31,7 @@ from purchase.views import PurchaseViewSet
 
 
 router = routers.DefaultRouter()
-router.register(r'categories', CategoryViewSet)
+
 router.register(r'subcategories', SubCategoryViewSet)
 router.register(r'products', ProductViewSet)
 router.register(r'companies', CompanyViewSet)
@@ -43,6 +45,10 @@ router.register(r'purchases', PurchaseViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',include(('category.urls','category'))),
+    path('api_generate_token/',views.obtain_auth_token),
+    path('login/',Login.as_view(),name='login'),
+    path('logout/',Logout.as_view(),name='logout'),
     path('',include('myapp.urls')),
     path('',include('category.urls')),
     path('',include('subcategory.urls')),
@@ -50,5 +56,6 @@ urlpatterns = [
     path('',include('lot.urls')),
     path('accounts/',include('django.contrib.auth.urls')),
     path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    
 ]

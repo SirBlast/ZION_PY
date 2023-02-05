@@ -18,7 +18,7 @@ class CategoryForm(ModelForm):
 class SubCategoryForm(ModelForm):
     class Meta:
         model= SubCategory 
-        fields =['name','idCategory']                
+        fields =['name','Category']                
         
 class PurchaseForm(ModelForm):
     class Meta:
