@@ -1,4 +1,5 @@
 from django.urls import path
-from . import views
+from .views import UserList
 urlpatterns =[      
+    path('users/',UserList.as_view(),name="user")
 ]

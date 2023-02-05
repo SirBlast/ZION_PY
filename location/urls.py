@@ -1,4 +1,5 @@
 from django.urls import path
-from . import views
-urlpatterns =[      
+from .views import LocationList
+urlpatterns =[  
+        path ('locations/',LocationList.as_view(), name ='location_list'),          
 ]

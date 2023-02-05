@@ -1,4 +1,5 @@
 from django.urls import path
-from . import views
-urlpatterns =[      
+from .views import LotList
+urlpatterns =[ 
+        path('lots/',LotList.as_view(),name="lot")           
 ]
