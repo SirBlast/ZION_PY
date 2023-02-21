@@ -32,6 +32,18 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'myapp',
+    'category',
+    'subcategory',
+    'purchase',
+    'company',
+    'location',
+    'person',
+    'user',
+    'product',
+    'supplier',
+    'lot',
+    'sale',
+    'purchasesale',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -122,3 +134,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#vars redirect
+LOGIN_REDIRECT_URL='/'
+LOGOUT_REDIRECT_URL='/'

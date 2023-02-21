@@ -1,0 +1,11 @@
+{% extends './base.html' %}
+{%block content%}
+<h3>Home</h3>
+
+
+{%if request.user.is_authenticated%}
+<hr>
+<h4>{{user.username | upper}} Bienvenido</h4>
+        
+ {% endif %}
+{% endblock %}
