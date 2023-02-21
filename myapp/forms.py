@@ -2,6 +2,8 @@ from django.forms import ModelForm
 from category.models import Category
 from subcategory.models import SubCategory
 from product.models import Product
+from purchase.models import Purchase
+from lot.models import Lot
 
 class ProductForm(ModelForm):
     class Meta:
@@ -16,5 +18,15 @@ class CategoryForm(ModelForm):
 class SubCategoryForm(ModelForm):
     class Meta:
         model= SubCategory 
-        fields =['name','idCategory']                
+        fields =['name','Category']                
+        
+class PurchaseForm(ModelForm):
+    class Meta:
+        model= Purchase
+        fields =['idUser','idProduct','idSupplier','idLot','amount','cost','note'] 
+        
+class LotForm(ModelForm):
+    class Meta:
+        model= Lot
+        fields =[]                
         

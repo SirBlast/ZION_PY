@@ -1,6 +1,7 @@
 from django.db import models
 from purchase.models import Purchase
 from user.models import User
+
 #Sale Model
 class Sale(models.Model):
     idSale= models.AutoField(primary_key=True,unique=True)
@@ -11,7 +12,7 @@ class Sale(models.Model):
     payment_method= models.CharField(max_length=50)
     note= models.CharField(max_length=50)
     total = models.FloatField()
-    del_date=models.DateField(auto_now=False, auto_now_add=True,null=True)
+    del_date = models.DateField(auto_now=True, auto_now_add=False,null=True)
     
     def __str__(self):
         return self.idSale

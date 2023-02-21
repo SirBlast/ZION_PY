@@ -10,7 +10,7 @@ class PurchaseSale(models.Model):
     idLot = models.ForeignKey(Lot, on_delete=models.CASCADE)
     amount = models.IntegerField()
     value = models.FloatField()
-    del_date= models.DateField(auto_now=False, auto_now_add=True,null=True)
+    del_date = models.DateField(auto_now=True, auto_now_add=False,null=True)
     
     def __str__(self):
         return self.idPurchaseSale

@@ -11,9 +11,9 @@ class Company(models.Model):
     phone_contact=models.CharField(max_length=50)
     cell_phone_contact=models.CharField(max_length=50)
     email_contact=models.EmailField(max_length=254)
-    del_date = models.DateField(auto_now=False, auto_now_add=False , null=True)
-    date_create = models.DateField(auto_now=True, auto_now_add=False)
-    date_update = models.DateField(auto_now=False, auto_now_add=True)
+    del_date = models.DateField(auto_now=True, auto_now_add=False,null=True)
+    date_create = models.DateTimeField(auto_now=False, auto_now_add=True)
+    date_update = models.DateTimeField(auto_now=True, auto_now_add=False)
     user_create = models.CharField(max_length=50)
     user_update = models.CharField(max_length=50)
     
